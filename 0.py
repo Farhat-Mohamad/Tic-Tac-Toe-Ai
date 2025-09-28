@@ -1,5 +1,7 @@
 EMPTY = ' '
 
+map = [[EMPTY for _ in range(3)] for _ in range (3)]
+
 def printMap(a):
     for b in a:
         print(b)
@@ -12,14 +14,13 @@ def is_a_winner(a, player):
     a[0][1]=='player' and a[1][1]=='player' and a[2][1]=='player') or (
     a[0][2]=='player' and a[1][2]=='player' and a[2][2]=='player') or (
     a[0][0]=='player' and a[1][1]=='player' and a[2][2]=='player') or (
-    a[0][2]=='player' and a[1][1]=='player' and a [2][0]=='player'):
+    a[0][2]=='player' and a[1][1]=='player' and a[2][0]=='player'):
         return True
     else:
         return False
     
-
-
-map = [[EMPTY for _ in range(3)] for _ in range (3)]
+def minimax(map, isMaxing, depth):
+    
     
 printMap(map)
 
