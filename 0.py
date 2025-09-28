@@ -1,9 +1,9 @@
 EMPTY = ' '
 
 map = [
-    [EMPTY,EMPTY,EMPTY],
-    [EMPTY,EMPTY,EMPTY],
-    [EMPTY,EMPTY,EMPTY],
+    [EMPTY , EMPTY , EMPTY],
+    [EMPTY , EMPTY , EMPTY],
+    [EMPTY , EMPTY , EMPTY],
 ]
 
 def printMap(a):
@@ -77,3 +77,43 @@ def select_move(map):
                     best_value = value
                     move=(i,j)
     move = None
+
+
+
+
+print("Let's start the game!")
+while(1):
+    printMap(map)
+    print("X's turn, select a move: ")
+    x = int(input())
+    y = int(input())
+
+    while x < 0 or y < 0 or x > 2 or y > 2 or map[x][y] != EMPTY or map[x][y] == 'O':
+        print("Invalid move, try again:")
+        x = int(input())
+        y = int(input())
+    map[x][y] = "X"
+    printMap(map)
+
+    if check_winner(map, "X")==True:
+        print("Player X is the winner")
+        break
+    if no_winner(map):
+        print("The game ended with a draw")
+        break
+
+    print("O's turn, do a move: ")
+
+    move = select_move(map)
+    
+    map[select_move[i]][select_move[j]] = "O"
+    
+    printMap(map)
+
+    if check_winner(map, "O")==True:
+        print("Player O is the winner")
+        break
+    
+    if no_winner(map):
+        print("The game ended with a draw")
+        break
