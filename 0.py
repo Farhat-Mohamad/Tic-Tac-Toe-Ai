@@ -4,31 +4,19 @@ def printMap(a):
     for b in a:
         print(b)
 
-def O_is_winner(a):
-    if (a[0][0]=='O' and a[0][1]=='O' and a[0][2]=='O') or ( 
-    a[1][0]=='O' and a[1][1]=='O' and a[1][2]=='O') or (
-    a[2][0]=='O' and a[2][1]=='O' and a[2][2]=='O') or (
-    a[0][0]=='O' and a[1][0]=='O' and a[2][0]=='O') or (
-    a[0][1]=='O' and a[1][1]=='O' and a[2][1]=='O') or (
-    a[0][2]=='O' and a[1][2]=='O' and a[2][2]=='O') or (
-    a[0][0]=='O' and a[1][1]=='O' and a[2][2]=='O') or (
-    a[0][2]=='O' and a[1][1]=='O' and a [2][0]=='O'):
+def is_a_winner(a, player):
+    if (a[0][0]=='player' and a[0][1]=='player' and a[0][2]=='player') or ( 
+    a[1][0]=='player' and a[1][1]=='player' and a[1][2]=='player') or (
+    a[2][0]=='player' and a[2][1]=='player' and a[2][2]=='player') or (
+    a[0][0]=='player' and a[1][0]=='player' and a[2][0]=='player') or (
+    a[0][1]=='player' and a[1][1]=='player' and a[2][1]=='player') or (
+    a[0][2]=='player' and a[1][2]=='player' and a[2][2]=='player') or (
+    a[0][0]=='player' and a[1][1]=='player' and a[2][2]=='player') or (
+    a[0][2]=='player' and a[1][1]=='player' and a [2][0]=='player'):
         return True
     else:
         return False
     
-def X_is_winner(a):
-    if (a[0][0]=='X' and a[0][1]=='X' and a[0][2]=='X') or ( 
-    a[1][0]=='X' and a[1][1]=='X' and a[1][2]=='X') or (
-    a[2][0]=='X' and a[2][1]=='X' and a[2][2]=='X') or (
-    a[0][0]=='X' and a[1][0]=='X' and a[2][0]=='X') or (
-    a[0][1]=='X' and a[1][1]=='X' and a[2][1]=='X') or (
-    a[0][2]=='X' and a[1][2]=='X' and a[2][2]=='X') or (
-    a[0][0]=='X' and a[1][1]=='X' and a[2][2]=='X') or (
-    a[0][2]=='X' and a[1][1]=='X' and a[2][0]=='X'):
-        return True
-    else:
-        return False
 
 
 map = [[EMPTY for _ in range(3)] for _ in range (3)]
