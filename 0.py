@@ -9,16 +9,17 @@ map = [
 def printMap(a):
     for b in a:
         print(b)
+    print("\n")
 
 def check_winner(a, player):
-    if (a[0][0]=='player' and a[0][1]=='player' and a[0][2]=='player') or ( 
-    a[1][0]=='player' and a[1][1]=='player' and a[1][2]=='player') or (
-    a[2][0]=='player' and a[2][1]=='player' and a[2][2]=='player') or (
-    a[0][0]=='player' and a[1][0]=='player' and a[2][0]=='player') or (
-    a[0][1]=='player' and a[1][1]=='player' and a[2][1]=='player') or (
-    a[0][2]=='player' and a[1][2]=='player' and a[2][2]=='player') or (
-    a[0][0]=='player' and a[1][1]=='player' and a[2][2]=='player') or (
-    a[0][2]=='player' and a[1][1]=='player' and a[2][0]=='player'):
+    if (a[0][0]==player and a[0][1]==player and a[0][2]==player) or ( 
+    a[1][0]==player and a[1][1]==player and a[1][2]==player) or (
+    a[2][0]==player and a[2][1]==player and a[2][2]==player) or (
+    a[0][0]==player and a[1][0]==player and a[2][0]==player) or (
+    a[0][1]==player and a[1][1]==player and a[2][1]==player) or (
+    a[0][2]==player and a[1][2]==player and a[2][2]==player) or (
+    a[0][0]==player and a[1][1]==player and a[2][2]==player) or (
+    a[0][2]==player and a[1][1]==player and a[2][0]==player):
         return True
     else:
         return False
@@ -41,19 +42,21 @@ def minimax(map, isMaxing, depth):
     #if none of the above happened, then that means that the game is still going on:
 
     if isMaxing:  # ai to make a move (calculate the value of the move)
-        value = ('-Infinity')
+        value = -float('inf')
+        other_value = 0
+
         for i in range(3):
             for j in range(3):
                 if map[i][j] == EMPTY:
                     map[i][j] = "O"
-                    other_value = minimax(map, False, depth-1)  # we want to see what value does this move gives us
-                                                  # we put false to let the code of other player get running to continue checking for the best value
+                    other_value = minimax(map, False, depth-1)  # we want to see what value does this move gives us                            # we put false to let the code of other player get running to continue checking for the best value
                     value = max(value, other_value)
                     map[i][j] = EMPTY
         return value
     
     if not isMaxing:
-        value = ('+Infinity')
+        value = float('inf')
+        other_value = 0
         for i in range(3):
             for j in range(3):
                 if map[i][j] == EMPTY:
@@ -66,17 +69,19 @@ def minimax(map, isMaxing, depth):
 
 
 def select_move(map):
-    best_value = ("-Infinity")
+    best_value = -float('inf')
+    move = None
+
     for i in range(3):
         for j in range(3):
             if map[i][j]== EMPTY:
                 map[i][j] = "X"
-                value = minimax(map, isMaxing= True, depth=3)
+                value = minimax(map,  True, 3)
                 map[i][j]= EMPTY
                 if value > best_value:
                     best_value = value
                     move=(i,j)
-    move = None
+    return move
 
 
 
@@ -106,7 +111,7 @@ while(1):
 
     move = select_move(map)
     
-    map[select_move[i]][select_move[j]] = "O"
+    map[move[0]][move[1]] = "O"
     
     printMap(map)
 
