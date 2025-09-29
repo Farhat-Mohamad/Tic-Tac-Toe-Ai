@@ -75,8 +75,8 @@ def select_move(map):
     for i in range(3):
         for j in range(3):
             if map[i][j]== EMPTY:
-                map[i][j] = "X"
-                value = minimax(map,  True, 3)
+                map[i][j] = "O"
+                value = minimax(map, False, 3)
                 map[i][j]= EMPTY
                 if value > best_value:
                     best_value = value
