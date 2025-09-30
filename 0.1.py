@@ -108,13 +108,20 @@ def box9_winner(a, player):
             return True
     return False
 
-def small_box_winner(a):
-    for t in range(1,4):
-        for i in range(3*t):
-            for j in range(9):
-                a[i][j]="M"
+def game_winner(a,player):
+   if (box1_winner(a,player) and box2_winner(a,player) and box3_winner(a,player) ) or (
+        box4_winner(a,player) and box5_winner(a,player) and box6_winner(a,player) ) or (
+        box7_winner(a,player) and box8_winner(a,player) and box9_winner(a,player) ) or (
+        box1_winner(a,player) and box4_winner(a,player) and box7_winner(a,player) ) or (
+        box2_winner(a,player) and box5_winner(a,player) and box8_winner(a,player) ) or (
+        box3_winner(a,player) and box6_winner(a,player) and box9_winner(a,player) ) or (
+        box1_winner(a,player) and box5_winner(a,player) and box9_winner(a,player) ) or (
+        box7_winner(a,player) and box5_winner(a,player) and box3_winner(a,player) ):
+            return True
+   return False
 
-small_box_winner(map)
+   
+
 printMap(map)
 
 #def X_is_winner(a):
